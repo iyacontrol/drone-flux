@@ -2,7 +2,10 @@ package main
 
 import (
 	"fmt"
+	"os"
 
+	"github.com/Sirupsen/logrus"
+	"github.com/joho/godotenv"
 	"github.com/urfave/cli"
 )
 
@@ -56,7 +59,13 @@ func main() {
 			EnvVar: "MESSAGE",
 		},
 	}
+	if err := app.Run(os.Args); err != nil {
+		logrus.Fatal(err)
+	}
 }
 
 func run(c *cli.Context) error {
+	if c.String("env-file") != "" {
+		_ = godotenv.Load(c.String("env-file"))
+	}
 }
