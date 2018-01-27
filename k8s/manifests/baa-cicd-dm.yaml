@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: baa-cicd-deployment
+  labels:
+    app: baa-cicd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: baa-cicd
+  template:
+    metadata:
+      labels:
+        app: baa-cicd
+    spec:
+      containers:
+      - name: baa-cicd
+        # image: baa-cicd:1.0.0
+        image: registry.in.dataengine.com/test/baa-cicd:1.0.0
+        ports:
+        - containerPort: 13123
