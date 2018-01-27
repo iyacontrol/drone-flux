@@ -3,8 +3,6 @@
 #
 FROM golang:1.8-alpine AS builder
 
-RUN apk add --no-cache git
-
 # set working directory
 RUN mkdir -p /go/src/drone-flux
 WORKDIR /go/src/drone-flux
