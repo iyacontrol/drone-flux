@@ -16,7 +16,8 @@ RUN go build -v -o "/drone-flux"
 FROM alpine:3.6
 MAINTAINER iyacontrol <gaohj2015@yeah.net>
 
-COPY fluxctl /bin/fluxctl
+COPY fluxctl /usr/bin/fluxctl
+RUN chmod +x /usr/bin/fluxctl 
 COPY --from=builder /drone-flux /bin/drone-flux
 
 
