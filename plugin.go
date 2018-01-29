@@ -64,30 +64,30 @@ func (p *Plugin) Exec() error {
 		p.Config.Message = p.Build.Message
 	}
 
-	args := []string{"--url " + p.Config.URL}
+	args := []string{"release --url=" + p.Config.URL}
 	if p.Config.Token != "" {
-		args = append(args, "--token "+p.Config.Token)
+		args = append(args, "--token="+p.Config.Token)
 	}
 
 	if p.Config.Namespace != "" {
-		args = append(args, "--namespace "+p.Config.Namespace)
+		args = append(args, "--namespace="+p.Config.Namespace)
 	}
 
-	args = append(args, "--controller ", strings.Join(p.Config.Controller, ","))
+	args = append(args, "--controller="+strings.Join(p.Config.Controller, ","))
 
 	if len(p.Config.Exclude) > 0 {
-		args = append(args, "--exclude ", strings.Join(p.Config.Exclude, ","))
+		args = append(args, "--exclude="+strings.Join(p.Config.Exclude, ","))
 	}
 
 	if p.Config.UpdateImage != "" {
-		args = append(args, "--update-image "+p.Config.UpdateImage)
+		args = append(args, "--update-image="+p.Config.UpdateImage)
 	}
 
 	if p.Config.User != "" {
-		args = append(args, "--user "+p.Config.User)
+		args = append(args, "--user="+p.Config.User)
 	}
 	if p.Config.Message != "" {
-		args = append(args, "--message "+p.Config.Message)
+		args = append(args, "--message="+p.Config.Message)
 	}
 
 	cmd := exec.Command("fluxctl", strings.Join(args, " "))
