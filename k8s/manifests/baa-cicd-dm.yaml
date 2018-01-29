@@ -17,6 +17,6 @@ spec:
       containers:
       - name: baa-cicd
         # image: baa-cicd:1.0.0
-        image: registry.in.dataengine.com/test/baa-cicd:1.0.0
+        image: registry.in.dataengine.com/test/baa-cicd:latest
         ports:
         - containerPort: 13123
