@@ -1,22 +1,14 @@
-apiVersion: extensions/v1beta1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
-  name: baa-cicd-deployment
-  labels:
-    app: baa-cicd
+name: busybox
+namespace: default
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: baa-cicd
-  template:
-    metadata:
-      labels:
-        app: baa-cicd
-    spec:
-      containers:
-      - name: baa-cicd
-        # image: baa-cicd:1.0.0
-        image: registry.in.dataengine.com/test/baa-cicd:latest
-        ports:
-        - containerPort: 13123
+containers:
+- image: registry.in.dataengine.com/library/busybox:1.25
+command:
+  - sleep
+  - "3600"
+imagePullPolicy: IfNotPresent
+name: busybox
+restartPolicy: Always
