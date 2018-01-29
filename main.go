@@ -5,7 +5,6 @@ import (
 	"os"
 
 	"github.com/Sirupsen/logrus"
-	"github.com/joho/godotenv"
 	"github.com/urfave/cli"
 )
 
@@ -122,10 +121,6 @@ func main() {
 }
 
 func run(c *cli.Context) error {
-	if c.String("env-file") != "" {
-		_ = godotenv.Load(c.String("env-file"))
-	}
-
 	plugin := Plugin{
 		Repo: Repo{
 			Owner: c.String("repo.owner"),
