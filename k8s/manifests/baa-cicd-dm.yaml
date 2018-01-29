@@ -1,23 +1,26 @@
 
----
-# You can optionally deploy memcache, for the Flux daemon to cache
-# container image metadata.
+        
+
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: baa-cicd
+  name: baa-cicd-deployment
+  labels:
+    app: baa-cicd
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: baa-cicd
   template:
     metadata:
       labels:
-        name: baa-cicd
+        app: baa-cicd
     spec:
       containers:
       - name: baa-cicd
         image: registry.in.dataengine.com/library/busybox:1.25
         imagePullPolicy: IfNotPresent
-        restartPolicy: Always
         command:
           - sleep
           - "3600"
